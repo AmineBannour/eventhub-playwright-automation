@@ -1,0 +1,9 @@
+[
+  { "id": "DD-01", "field": "fullName", "value": "A", "expectedError": "Full name must be between 2 and 50 characters" },
+  { "id": "DD-02", "field": "fullName", "value": "R2-D2", "expectedError": "Full name may only contain letters, spaces, hyphens and apostrophes" },
+  { "id": "DD-03", "field": "email", "value": "ada.lovelace.example.com", "expectedError": "Enter a valid email address" },
+  { "id": "DD-04", "field": "email", "value": "ada@example", "expectedError": "Enter a valid email address" },
+  { "id": "DD-05", "field": "age", "value": "25.5", "expectedError": "Age must be a whole number" },
+  { "id": "DD-06", "field": "tickets", "value": "-3", "expectedError": "Number of tickets must be between 1 and 10" },
+  { "id": "DD-07", "field": "age", "value": "", "expectedError": "Age is required" }
+]

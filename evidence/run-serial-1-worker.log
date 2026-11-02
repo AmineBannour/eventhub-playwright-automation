@@ -1,0 +1,67 @@
+npm notice run eventhub-playwright-automation@1.0.0 npx
+npm notice run playwright test --workers=1
+(node:50816) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+Running 48 tests using 1 worker
+
+(node:35568) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  ok  1 [api] › tests\api\authentication.spec.ts:6:7 › Authentication & authorization › API-02 tokens are issued only for valid credentials and protected endpoints require one @auth @negative @schema (108ms)
+  ok  2 [api] › tests\api\public-endpoints.spec.ts:6:7 › Public endpoints › API-01 GET /api/health and /api/ticket-types return the documented contract and headers @smoke @schema @headers (31ms)
+  ok  3 [api] › tests\api\registrations-crud.spec.ts:8:7 › Registrations CRUD › API-03 POST /api/registrations creates a registration (201, Location, schema, computed total) @crud @schema @positive (463ms)
+  ok  4 [api] › tests\api\registrations-crud.spec.ts:40:7 › Registrations CRUD › API-04 GET returns a registration by id, filters the list by email, and 404s for unknown ids @crud @negative (488ms)
+  ok  5 [api] › tests\api\registrations-crud.spec.ts:67:7 › Registrations CRUD › API-05 PUT updates a registration and the change is persisted @crud @positive (774ms)
+  ok  6 [api] › tests\api\registrations-crud.spec.ts:84:7 › Registrations CRUD › API-06 DELETE removes a registration; repeated delete and later reads return 404 @crud @negative (839ms)
+  ok  7 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary age=17] -> 400 @boundary @data-driven (18ms)
+  ok  8 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary age=18] -> 201 @boundary @data-driven (817ms)
+  ok  9 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary age=99] -> 201 @boundary @data-driven (552ms)
+  ok 10 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary age=100] -> 400 @boundary @data-driven (17ms)
+  ok 11 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary tickets=0] -> 400 @boundary @data-driven (20ms)
+  ok 12 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary tickets=1] -> 201 @boundary @data-driven (1.2s)
+  ok 13 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary tickets=10] -> 201 @boundary @data-driven (457ms)
+  ok 14 [api] › tests\api\registrations-validation.spec.ts:10:9 › Registrations - validation & error handling › API-07 [boundary tickets=11] -> 400 @boundary @data-driven (22ms)
+  ok 15 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [malformed email] -> 400 with a field error @negative @validation @data-driven (20ms)
+  ok 16 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [date in the past] -> 400 with a field error @negative @validation @data-driven (24ms)
+  ok 17 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [date is today] -> 400 with a field error @negative @validation @data-driven (20ms)
+  ok 18 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [date on a Sunday] -> 400 with a field error @negative @validation @data-driven (26ms)
+  ok 19 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [wrong date format] -> 400 with a field error @negative @validation @data-driven (23ms)
+  ok 20 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [unknown ticket type] -> 400 with a field error @negative @validation @data-driven (23ms)
+  ok 21 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [notes over 500 characters] -> 400 with a field error @negative @validation @data-driven (21ms)
+  ok 22 [api] › tests\api\registrations-validation.spec.ts:23:9 › Registrations - validation & error handling › API-07 [document is not a PDF] -> 400 with a field error @negative @validation @data-driven (20ms)
+  ok 23 [api] › tests\api\registrations-validation.spec.ts:29:7 › Registrations - validation & error handling › API-08 duplicate email, empty body and malformed JSON return clear errors @negative @error-handling (2.2s)
+(node:12472) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  ok 24 [ui] › tests\ui\authentication.spec.ts:5:7 › Authentication (regression) › UI-10 sign-in guards the registration page and lands users on it after login @regression @smoke @negative (741ms)
+  ok 25 [ui] › tests\ui\date-picker.spec.ts:6:7 › Registration form - date picker › UI-07 event date only allows Monday-Saturday dates from tomorrow to one year ahead @date @validation @boundary (717ms)
+  ok 26 [ui] › tests\ui\dialogs.spec.ts:5:7 › Dialogs › UI-09 cancelling the modal and the delete confirmation keeps data; accepting deletes it @dialog @state (1.7s)
+  ok 27 [ui] › tests\ui\duplicate-registration.spec.ts:5:7 › Failure-oriented › UI-F01 a second registration with an already-used email is rejected with a clear error @negative @failure (2.0s)
+  ok 28 [ui] › tests\ui\dynamic-elements.spec.ts:6:7 › Registration page - dynamic elements › UI-08 total price, character counter and list filter update as the user interacts @dynamic (2.6s)
+  -  29 [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo
+  ok 30 [ui] › tests\ui\form-validation.spec.ts:7:7 › Registration form - field validation › UI-02 submitting an empty form shows every required-field message and opens no dialog @negative @validation (613ms)
+  ok 31 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-01] rejects fullName="A" with the right message @data-driven @validation @negative (520ms)
+  ok 32 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-02] rejects fullName="R2-D2" with the right message @data-driven @validation @negative (528ms)
+  ok 33 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-03] rejects email="ada.lovelace.example.com" with the right message @data-driven @validation @negative (512ms)
+  ok 34 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-04] rejects email="ada@example" with the right message @data-driven @validation @negative (519ms)
+  ok 35 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-05] rejects age="25.5" with the right message @data-driven @validation @negative (541ms)
+  ok 36 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-06] rejects tickets="-3" with the right message @data-driven @validation @negative (531ms)
+  ok 37 [ui] › tests\ui\form-validation.spec.ts:36:9 › Registration form - field validation › UI-03 [DD-07] rejects age="" with the right message @data-driven @validation @negative (493ms)
+  ok 38 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [age=17] is rejected at the boundary @boundary @data-driven (542ms)
+  ok 39 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [age=18] is accepted at the boundary @boundary @data-driven (525ms)
+  ok 40 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [age=99] is accepted at the boundary @boundary @data-driven (554ms)
+  ok 41 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [age=100] is rejected at the boundary @boundary @data-driven (524ms)
+  ok 42 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [tickets=0] is rejected at the boundary @boundary @data-driven (527ms)
+  ok 43 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [tickets=1] is accepted at the boundary @boundary @data-driven (513ms)
+  ok 44 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [tickets=10] is accepted at the boundary @boundary @data-driven (517ms)
+  ok 45 [ui] › tests\ui\form-validation.spec.ts:48:9 › Registration form - field validation › UI-04 [tickets=11] is rejected at the boundary @boundary @data-driven (530ms)
+  ok 46 [ui] › tests\ui\registration-happy-path.spec.ts:7:7 › Registration - happy path › UI-01 registers with valid data and the registration is displayed and persisted @positive @state @regression (6.6s)
+  ok 47 [ui] › tests\ui\uploads.spec.ts:11:7 › Registration form - uploads › UI-05 ID document upload accepts PDFs up to 1 MB and rejects other files @file @validation (909ms)
+  ok 48 [ui] › tests\ui\uploads.spec.ts:37:7 › Registration form - uploads › UI-06 profile photo accepts real PNG/JPEG images and rejects invalid ones @file @validation (1.0s)
+
+  1 skipped
+  47 passed (37.9s)
+
+To open last HTML report run:
+
+  npx playwright show-report reports\html
+

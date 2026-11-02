@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event registration | EventHub</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <span class="logo">EventHub</span>
+    <nav>
+      <a href="#registration-form">Register</a>
+      <a href="#registrations">My registrations</a>
+      <button type="button" id="sign-out">Sign out</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="form-title">
+      <h1 id="form-title">Event registration</h1>
+      <p class="hint">EventHub Tech Summit 2027 &middot; open Monday to Saturday</p>
+      <div id="form-alert" class="alert" role="alert" hidden></div>
+
+      <form id="registration-form" novalidate>
+        <div class="grid">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" aria-describedby="fullName-error">
+            <span id="fullName-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" aria-describedby="email-error">
+            <span id="email-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number" step="1" aria-describedby="age-hint age-error">
+            <span id="age-hint" class="hint">Attendees must be 18 to 99 years old</span>
+            <span id="age-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="tickets">Number of tickets</label>
+            <input id="tickets" name="tickets" type="number" step="1" value="1" aria-describedby="tickets-hint tickets-error">
+            <span id="tickets-hint" class="hint">1 to 10 tickets per registration</span>
+            <span id="tickets-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="ticketType">Ticket type</label>
+            <select id="ticketType" name="ticketType" aria-describedby="ticketType-error">
+              <option value="">Select a ticket type</option>
+            </select>
+            <span id="ticketType-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="eventDate">Event date</label>
+            <input id="eventDate" name="eventDate" type="date" aria-describedby="eventDate-hint eventDate-error">
+            <span id="eventDate-hint" class="hint">From tomorrow, up to one year ahead (no Sundays)</span>
+            <span id="eventDate-error" class="error"></span>
+          </div>
+          <div class="field full">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Dietary needs, accessibility requests..." aria-describedby="notes-counter notes-error"></textarea>
+            <span id="notes-counter" class="counter" aria-live="polite">0 / 500</span>
+            <span id="notes-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="document">ID document (PDF)</label>
+            <input id="document" name="document" type="file" accept=".pdf,application/pdf" aria-describedby="document-status document-error">
+            <span id="document-status" class="status-ok" role="status"></span>
+            <span id="document-error" class="error"></span>
+          </div>
+          <div class="field">
+            <label for="photo">Profile photo (PNG or JPEG)</label>
+            <input id="photo" name="photo" type="file" accept="image/png,image/jpeg" aria-describedby="photo-status photo-error">
+            <div class="preview" id="photo-preview" hidden>
+              <img id="photo-img" alt="Profile photo preview">
+              <span id="photo-status" class="status-ok" role="status"></span>
+            </div>
+            <span id="photo-error" class="error"></span>
+          </div>
+        </div>
+
+        <div class="summary">
+          <span class="total" id="total-price" aria-live="polite">Total: €0.00</span>
+          <button class="primary" type="submit" id="submit-button">Register</button>
+        </div>
+        <div class="spinner" id="submit-spinner" role="status" hidden>Submitting registration…</div>
+      </form>
+    </section>
+
+    <section class="card" id="registrations" aria-labelledby="list-title">
+      <div class="toolbar">
+        <h2 id="list-title">My registrations</h2>
+        <input type="text" id="filter" aria-label="Filter by email" placeholder="Filter by email">
+      </div>
+      <table aria-labelledby="list-title">
+        <thead>
+          <tr><th>Reference</th><th>Name</th><th>Email</th><th>Ticket</th><th>Qty</th><th>Event date</th><th>Total</th><th><span class="hint">Actions</span></th></tr>
+        </thead>
+        <tbody id="registrations-body"></tbody>
+      </table>
+      <p class="empty" id="empty-state" hidden>No registrations yet.</p>
+    </section>
+  </main>
+
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <h2 id="confirm-title">Confirm registration</h2>
+    <p>Please check your details before confirming.</p>
+    <dl id="confirm-summary"></dl>
+    <div class="dialog-actions">
+      <button type="button" class="secondary" id="confirm-cancel">Cancel</button>
+      <button type="button" class="primary" id="confirm-ok">Confirm</button>
+    </div>
+  </dialog>
+
+  <div class="toast-region" id="toasts" aria-live="polite"></div>
+
+  <script src="/validation.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

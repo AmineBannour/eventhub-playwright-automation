@@ -1,0 +1,6 @@
+pattern seen by Ajv (original): ^d+.d+.d+$
+1.0.0    fixed: true  original: false
+10.2.33  fixed: true  original: false
+1.0      fixed: false  original: false
+dXdXd    fixed: false  original: true
+d.d.d    fixed: false  original: true

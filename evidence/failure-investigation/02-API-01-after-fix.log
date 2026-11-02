@@ -1,0 +1,12 @@
+npm notice run eventhub-playwright-automation@1.0.0 npx
+npm notice run playwright test -g API-01 --reporter=list
+(node:27800) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:7796) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  ok 1 [api] › tests\api\public-endpoints.spec.ts:6:7 › Public endpoints › API-01 GET /api/health and /api/ticket-types return the documented contract and headers @smoke @schema @headers (98ms)
+
+  1 passed (1.8s)

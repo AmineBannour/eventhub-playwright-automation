@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in | EventHub</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar"><span class="logo">EventHub</span></header>
+  <main>
+    <section class="card login">
+      <h1>Sign in to EventHub</h1>
+      <div id="login-error" class="alert" role="alert" hidden></div>
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username">
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password">
+        </div>
+        <button class="primary" type="submit">Sign in</button>
+      </form>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('login-form');
+    const errorBox = document.getElementById('login-error');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      errorBox.hidden = true;
+      const username = form.username.value.trim();
+      const password = form.password.value;
+      if (!username || !password) {
+        errorBox.textContent = 'Enter your username and password';
+        errorBox.hidden = false;
+        return;
+      }
+      const res = await fetch('/api/auth/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      if (!res.ok) {
+        errorBox.textContent = 'Invalid username or password';
+        errorBox.hidden = false;
+        return;
+      }
+      const { token } = await res.json();
+      sessionStorage.setItem('eventhub.token', token);
+      location.assign('/register.html');
+    });
+  </script>
+</body>
+</html>

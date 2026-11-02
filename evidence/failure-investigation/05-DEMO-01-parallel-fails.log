@@ -1,0 +1,56 @@
+npm notice run eventhub-playwright-automation@1.0.0 npx
+npm notice run playwright test tests/ui/failure-demo.spec.ts --project=ui --workers=4 --repeat-each=4 --reporter=list
+(node:49224) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+Running 4 tests using 4 workers
+
+(node:48888) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:42368) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:51280) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:5368) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  ok 1 [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo (1.4s)
+  ok 4 [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo (1.8s)
+  ok 3 [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo (1.9s)
+  x  2 [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo (1.5s)
+
+
+  1) [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('table', { name: 'My registrations' }).getByRole('row', { name: /Ada Lovelace/ })
+    Expected substring: "qa.3158670c@eventhub.test"
+    Error: strict mode violation: getByRole('table', { name: 'My registrations' }).getByRole('row', { name: /Ada Lovelace/ }) resolved to 2 elements:
+        1) <tr data-reference="EVH-B01C74">…</tr> aka getByRole('row', { name: 'EVH-B01C74 Ada Lovelace qa.' })
+        2) <tr data-reference="EVH-C3BE9F">…</tr> aka getByRole('row', { name: 'EVH-C3BE9F Ada Lovelace qa.' })
+
+    Call log:
+      - Expect "toContainText" with timeout 5000ms
+      - waiting for getByRole('table', { name: 'My registrations' }).getByRole('row', { name: /Ada Lovelace/ })
+
+
+      24 |     // ORIGINAL (faulty): matches every row whose name is "Ada Lovelace".
+      25 |     const row = ui.table.root.getByRole('row', { name: new RegExp(data.fullName) });
+    > 26 |     await expect(row).toContainText(data.email);
+         |                       ^
+      27 |
+      28 |     // FIX used in UI-01: ui.table.rowByEmail(data.email) - email is unique per test.
+      29 |   });
+        at C:\Users\banno\Documents\QA_Project\tests\ui\failure-demo.spec.ts:26:23
+
+    Test timeout of 30000ms exceeded.
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\failure-demo-Failure-demo--a5855-e-table-faulty-locator-demo-ui-repeat2\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\failure-demo-Failure-demo--a5855-e-table-faulty-locator-demo-ui-repeat2\error-context.md
+
+  1 failed
+    [ui] › tests\ui\failure-demo.spec.ts:17:7 › Failure demo - row located by name (original, faulty locator) › DEMO-01 new registration appears in the table (faulty locator) @demo 
+  3 passed (34.1s)

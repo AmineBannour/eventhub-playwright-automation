@@ -1,0 +1,10 @@
+node_modules/
+.env
+reports/
+test-results/
+playwright-report/
+blob-report/
+*.log
+.claude/
+# Execution evidence logs are part of the deliverable
+!evidence/**/*.log

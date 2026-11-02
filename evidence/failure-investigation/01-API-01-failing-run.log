@@ -1,0 +1,45 @@
+npm notice run eventhub-playwright-automation@1.0.0 npx
+npm notice run playwright test -g API-01 --reporter=list
+(node:7684) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:42228) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  x  1 [api] › tests\api\public-endpoints.spec.ts:6:7 › Public endpoints › API-01 GET /api/health and /api/ticket-types return the documented contract and headers @smoke @schema @headers (75ms)
+
+
+  1) [api] › tests\api\public-endpoints.spec.ts:6:7 › Public endpoints › API-01 GET /api/health and /api/ticket-types return the documented contract and headers @smoke @schema @headers › GET /api/health 
+
+    Error: response does not match "health" schema:
+    data/version must match pattern "^d+.d+.d+$"
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+       at ..\utils\assertions.ts:19
+
+      17 |   if (!validate) throw new Error(`Unknown schema ${schema}`);
+      18 |   const valid = validate(body);
+    > 19 |   expect(valid, `response does not match "${schema}" schema:\n${ajv.errorsText(validate.errors, { separator: '\n' })}`).toBe(true);
+         |                                                                                                                         ^
+      20 | }
+      21 |
+      22 | export function expectJson(result: ApiResult): void {
+        at expectSchema (C:\Users\banno\Documents\QA_Project\utils\assertions.ts:19:121)
+        at C:\Users\banno\Documents\QA_Project\tests\api\public-endpoints.spec.ts:13:19
+        at C:\Users\banno\Documents\QA_Project\tests\api\public-endpoints.spec.ts:9:5
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\public-endpoints-Public-en-14ce6-eaders-smoke-schema-headers-api\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\public-endpoints-Public-en-14ce6-eaders-smoke-schema-headers-api\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [api] › tests\api\public-endpoints.spec.ts:6:7 › Public endpoints › API-01 GET /api/health and /api/ticket-types return the documented contract and headers @smoke @schema @headers 
