@@ -8,3 +8,5 @@ blob-report/
 .claude/
 # Execution evidence logs are part of the deliverable
 !evidence/**/*.log
+# Office lock files (created while a document is open)
+~$*

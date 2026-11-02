@@ -75,6 +75,52 @@ Then open <http://localhost:3000> and sign in with the credentials from `.env` /
 | Reproduce the investigated failure | `npm run test:failure-demo` (expected to FAIL – see `docs/FAILURE_INVESTIGATION.md`) |
 | Type-check the framework | `npm run typecheck` |
 
+### Running each member's tests
+
+Each command runs only that person's 4 tests. Run them in a terminal opened in the `QA_Project` folder.
+
+**Amine** – UI-01, UI-10, API-01, API-02
+
+```bash
+npx playwright test -g "UI-01|UI-10|API-01|API-02"
+```
+
+**Lilian** – API-03, API-04, API-05, API-06
+
+```bash
+npx playwright test -g "API-03|API-04|API-05|API-06"
+```
+
+**Amira** – UI-05, UI-06, UI-08, UI-09
+
+```bash
+npx playwright test -g "UI-05|UI-06|UI-08|UI-09"
+```
+
+**Salma** – UI-02, UI-03, UI-04, API-07
+
+```bash
+npx playwright test -g "UI-02|UI-03|UI-04|API-07"
+```
+
+**Issraa** – UI-07, UI-F01, API-08
+
+```bash
+npx playwright test -g "UI-07|UI-F01|API-08"
+```
+
+Issraa's 4th test, DEMO-01, is the failure demo. It is skipped normally and has its own command, which is **supposed to fail**:
+
+```bash
+npm run test:failure-demo
+```
+
+**Tips for the demo:**
+
+- To watch the browser, add `--headed --workers=1` to the end of any command, e.g. `npx playwright test -g "UI-05|UI-06|UI-08|UI-09" --headed --workers=1`. API tests have no browser, so this only changes the UI tests.
+- To show the report afterwards: `npm run report`.
+- Salma's command shows 32 results instead of 4, because UI-03 (7 data sets), UI-04 (8) and API-07 (16) run once per data set, plus UI-02. Amine, Lilian and Amira each show 4, and Issraa's shows 3.
+
 ## 5. Reports and evidence
 
 After every run:
